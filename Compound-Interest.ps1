@@ -1,4 +1,4 @@
-
+# grabs a current balance, monthly contributions, average growth percentage, and number of years standing to show you what the new balance will be each year
 param (
     [Parameter(Mandatory)]
     [int]$Balance,
