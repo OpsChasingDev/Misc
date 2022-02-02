@@ -5,11 +5,19 @@ param (
     [Parameter(Mandatory)]
     [int]$Contribution,
     [Parameter(Mandatory)]
-    [float]$Growth = 0.08,
+    [float]$Growth,
     [Parameter(Mandatory)]
-    [int]$Years = 1
+    [int]$Year
 )
 
-for ($i = 1; $i -le $Years; $i++) {
-    $Balance = $Balance + $Contribution + ($Balance * $Growth); Write-Output $Balance
+$ObjectCollection = @()
+
+for ($i = 1; $i -le $Year; $i++) {
+    $Balance = $Balance + $Contribution + ($Balance * $Growth)
+    $obj = New-Object -TypeName psobject
+    $obj | Add-Member -MemberType NoteProperty -Name "Year" -Value $Year
+    $obj | Add-Member -MemberType NoteProperty -Name "Balance" -Value $Balance
+    $ObjectCollection += $obj
 }
+
+Write-Output $ObjectCollection
