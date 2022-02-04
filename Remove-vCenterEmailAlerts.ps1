@@ -6,20 +6,37 @@
 #>
 
 # host hardware
-$HostHardware = Get-AlarmDefinition "host hardware*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$HostHardware = Get-AlarmDefinition "host hardware*"
+$HostHardware | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # host connection
-$HostConnection = Get-AlarmDefinition "host con*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$HostConnection = Get-AlarmDefinition "host con*"
+$HostConnection | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # host cpu
-$HostCPU = Get-AlarmDefinition "host cpu*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$HostCPU = Get-AlarmDefinition "host cpu*"
+$HostCPU | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # host memory
-$HostMemory = Get-AlarmDefinition "host memory*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$HostMemory = Get-AlarmDefinition "host memory*"
+$HostMemory | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # vSphere HA
-$vSphereHA = Get-AlarmDefinition "vSphere HA*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$vSphereHA = Get-AlarmDefinition "vSphere HA*"
+$vSphereHA | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # vCenter
-$vCenter = Get-AlarmDefinition "vCenter*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$vCenter = Get-AlarmDefinition "vCenter*"
+$vCenter | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # expired licenses
-$License = Get-AlarmDefinition "Expired*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$License = Get-AlarmDefinition "Expired*"
+$License | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # datastore space
-$DatastoreUsage = Get-AlarmDefinition "datastore usage on disk" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$DatastoreUsage = Get-AlarmDefinition "datastore usage on disk"
+$DatastoreUsage | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+
 # datastore connection
-$DatastoreConnection = Get-AlarmDefinition "cannot connect*" | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
+$DatastoreConnection = Get-AlarmDefinition "cannot connect*"
+$DatastoreConnection | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
