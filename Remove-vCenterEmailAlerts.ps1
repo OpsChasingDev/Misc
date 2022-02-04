@@ -5,6 +5,9 @@
     THERE IS NO SAFETY NET TO PREVENT YOU FROM PERFORMING THE ACTIONS IN THIS SCRIPT IF RAN
 #>
 
+# the lines below each grab vCenter alarm definitions by using various string matches and stores them as variables
+# the variables are piped to the Remove-AlarmAction cmdlet to remove the email action from each definition
+
 # host hardware
 $HostHardware = Get-AlarmDefinition "host hardware*"
 $HostHardware | Get-AlarmAction -ActionType SendEmail | Remove-AlarmAction
