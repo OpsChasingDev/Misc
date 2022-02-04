@@ -1,5 +1,4 @@
-
-# $vCenter = Connect-VIServer vcenter01-atl.theprestonpartnership.com -Force
+# this script assumes you've already connected to your vCenter instance using Connect-VIServer
 
 param (
     [Parameter(Mandatory)]
