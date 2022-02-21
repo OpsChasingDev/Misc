@@ -9,4 +9,9 @@ foreach ($a in $Array) {
     $IP = $Subnet + $a
     # Write-Output $IP
     $TCPTest = Test-NetConnection -ComputerName $IP -Port 443
+    if ($TCPTest.TcpTestSucceeded -eq $true) {
+        $Collection += $IP
+    }
 }
+
+Write-Output $Collection
