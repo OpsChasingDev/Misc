@@ -11,4 +11,6 @@ if ($BitLocker) {
         }
     }
 }
-else {break}
+else {
+    Write-Output 'C: drive not encrypted'
+}
