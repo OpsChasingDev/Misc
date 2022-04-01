@@ -1,6 +1,8 @@
 # looks up registry key on a system for the version of the VMware Horizon View Agent installed
+[Cmdletbinding()]
 param (
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory,
+        ValueFromPipelineByPropertyName)]
     [string[]]$ComputerName
 )
 
