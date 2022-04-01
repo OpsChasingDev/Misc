@@ -1,12 +1,7 @@
-# looks up registry key on a system for the version of the VMware Horizon View Agent installed
-[Cmdletbinding()]
-param (
-    [Parameter(Mandatory,
-        ValueFromPipeline)]
-    [string[]]$ComputerName
-)
+$VDI = (Get-ADComputer -Filter *).Name
 
-Invoke-Command $ComputerName {
+Invoke-Command -ComputerName $VDI -ErrorAction SilentlyContinue {
     Get-ItemProperty -Path 'HKLM:\SOFTWARE\WOW6432Node\VMware, Inc.\AgentVersions' -Name 'View-Agent' |
     Select-Object PSComputerName, View-Agent
 }
+
