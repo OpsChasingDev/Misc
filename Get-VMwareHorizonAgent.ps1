@@ -2,7 +2,7 @@
 [Cmdletbinding()]
 param (
     [Parameter(Mandatory,
-        ValueFromPipelineByPropertyName)]
+        ValueFromPipeline)]
     [string[]]$ComputerName
 )
 
