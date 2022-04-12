@@ -8,8 +8,10 @@ $VersionNumbers = $AgentVersion.Split('.')
 [int]$NumberTwo = $VersionNumbers[1]
 
 if ($NumberOne -gt 8) {
-    Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false
+    Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false -ErrorAction SilentlyContinue
+    Write-Output 'DISABLE'
 }
 elseif ($NumberOne -ge 8 -and $NumberTwo -ge 4) {
-    Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false
+    Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false -ErrorAction SilentlyContinue
+    Write-Output 'DISABLE'
 }
