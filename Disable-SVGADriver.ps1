@@ -1,0 +1,1 @@
+Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false
