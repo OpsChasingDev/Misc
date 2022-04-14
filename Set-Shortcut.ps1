@@ -1,3 +1,5 @@
+# sets a shortcut named $ShortcutName to any item specified in the literal path $TargetPath to the all users desktop
+
 param (
     [Parameter(Mandatory)]
     [string]$ShortcutName,
