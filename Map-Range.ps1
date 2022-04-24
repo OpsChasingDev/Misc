@@ -14,14 +14,20 @@ PS C:\git\Misc>
 
 #>
 
-function scale {
+function Map-Range {
     param (
+        [Parameter(Mandatory)]
         [int]$Number,
+        [Parameter(Mandatory)]
         [int]$inMin,
+        [Parameter(Mandatory)]
         [int]$inMax,
+        [Parameter(Mandatory)]
         [int]$outMin,
+        [Parameter(Mandatory)]
         [int]$outMax
     )
+
     $calc = ($Number - $inMin) * ($outMax - $outMin) / ($inMax - $inMin) + $outMin
     Write-Output $calc
 }
