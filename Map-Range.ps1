@@ -29,5 +29,9 @@ function Map-Range {
     )
 
     $calc = ($Number - $inMin) * ($outMax - $outMin) / ($inMax - $inMin) + $outMin
+    $outputDiff = $outMax - $outMin
+    $inputDiff = $inMax - $inMin
+    
+    Write-Verbose "Ratio between intput and output range differences is ${outputDiff}:$inputDiff"
     Write-Output $calc
 }
