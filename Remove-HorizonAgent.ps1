@@ -10,6 +10,6 @@ $split = $modstring.Split(" ")
 $split2 = $split[1]
 $split3 = $split2.Substring(2)
 
-$fullstring = "/X" + $split3 + " /forcerestart /quiet"
+$fullstring = "/X" + $split3 + " /norestart /quiet"
 
 Start-Process msiexec.exe -ArgumentList "$fullstring"
