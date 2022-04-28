@@ -10,12 +10,12 @@ $VersionNumbers = $AgentVersion.Split('.')
 if ($NumberOne -gt 8) {
     Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false -ErrorAction SilentlyContinue
     Start-Sleep -Seconds 2
-    Write-Output 'DISABLE'
+    Write-Output Write-Output "Horizon Agent version: $AgentVersion"
     Restart-Computer -ComputerName $env:COMPUTERNAME -Force
 }
 elseif ($NumberOne -ge 8 -and $NumberTwo -ge 4) {
     Get-PnpDevice -FriendlyName "VMware SVGA 3D" | Disable-PnpDevice -Confirm:$false -ErrorAction SilentlyContinue
     Start-Sleep -Seconds 2
-    Write-Output 'DISABLE'
+    Write-Output Write-Output "Horizon Agent version: $AgentVersion"
     Restart-Computer -ComputerName $env:COMPUTERNAME -Force
 }
