@@ -15,6 +15,7 @@ $fullstring = "/X" + $split3 + " /norestart /quiet"
 Start-Process msiexec.exe -ArgumentList "$fullstring" -Wait
 $Test = Test-Path 'C:\Program Files\VMware\VMware View\Agent'
 if ($Test -eq $false) {
+    Write-Output "Horizon Agent uninstalled - rebooting."
     Restart-Computer -Force
 }
 else {
