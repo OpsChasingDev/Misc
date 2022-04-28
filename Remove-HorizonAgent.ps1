@@ -13,5 +13,10 @@ $split3 = $split2.Substring(2)
 $fullstring = "/X" + $split3 + " /norestart /quiet"
 
 Start-Process msiexec.exe -ArgumentList "$fullstring" -Wait
-
-Restart-Computer -Force
+$Test = Test-Path 'C:\Program Files\VMware\VMware View\Agent'
+if ($Test -eq $false) {
+    Restart-Computer -Force
+}
+else {
+    Write-Output "The Horizon Agent was not installed."
+}
