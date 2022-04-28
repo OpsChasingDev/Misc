@@ -13,3 +13,5 @@ $split3 = $split2.Substring(2)
 $fullstring = "/X" + $split3 + " /norestart /quiet"
 
 Start-Process msiexec.exe -ArgumentList "$fullstring" -Wait
+
+Restart-Computer -Force
