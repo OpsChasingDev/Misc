@@ -8,8 +8,8 @@ $Letter = @(
     'S:'
 )
 
-$Login = cscript.exe \\SL-DC-01\NETLOGON\TestLogin.vbs
-$Login = Write-Output $Login[3]
+#$Login = cscript.exe \\SL-DC-01\NETLOGON\TestLogin.vbs
+#$Login = Write-Output $Login[3]
 
 # check that number of shares and letters inputted are equal
 if ($Share.Count -ne $Letter.Count) {
@@ -28,11 +28,14 @@ foreach ($h in $Share) {
 }
 
 # creating object for mapping info
-$obj = New-Object -TypeName psobject
+$Collection = @()
 for ($i = 0; $i -lt $Share.Count; $i++) {
-    $obj | Add-Member -MemberType AliasProperty -Name 'Letter' -Value $Letter[$i]
-    $obj | Add-Member -MemberType AliasProperty -Name 'Share' -Value $Share[$i]
+    $obj = New-Object -TypeName psobject
+    $obj | Add-Member -MemberType NoteProperty -Name 'Letter' -Value $Letter[$i]
+    $obj | Add-Member -MemberType NoteProperty -Name 'Share' -Value $Share[$i]
+    $Collection += $obj
 }
-Write-Output $obj
+
+Write-Output $Collection
 
 eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully" > $null
