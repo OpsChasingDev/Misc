@@ -3,7 +3,7 @@ $Share = @(
     '\\SL-DC-01\TestShares'
 )
 
-$letter = @(
+$Letter = @(
     'T:'
     'S:'
 )
@@ -12,7 +12,7 @@ $Login = cscript.exe \\SL-DC-01\NETLOGON\TestLogin.vbs
 $Login = Write-Output $Login[3]
 
 # check that number of shares and letters inputted are equal
-if ($Share.Count -ne $letter.Count) {
+if ($Share.Count -ne $Letter.Count) {
     Write-Output "The number of share and letters to map them are not equal."
     eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "The number of share and letters to map them are not equal." > $null
     exit
@@ -27,14 +27,12 @@ foreach ($h in $Share) {
     }
 }
 
-# creating objects for mapping info
-$Count = $Share.Count
+# creating object for mapping info
 $obj = New-Object -TypeName psobject
+for ($i = 0; $i -lt $Share.Count; $i++) {
+    $obj | Add-Member -MemberType AliasProperty -Name 'Letter' -Value $Letter[$i]
+    $obj | Add-Member -MemberType AliasProperty -Name 'Share' -Value $Share[$i]
+}
+Write-Output $obj
 
-
-# mapping drives
-
-foreach ($s in $Share) {
-    New-SmbMapping -LocalPath 
-
-eventcreate /ID 13 /L APPLICATION /T WARNING /SO LOGINTEST /D "wrote successfully" > $null
+eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully" > $null
