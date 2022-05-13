@@ -37,7 +37,8 @@ for ($i = 0; $i -lt $Share.Count; $i++) {
 }
 
 for ($f = 0; $f -lt $Collection.Count; $f++) {
-    New-SmbMapping -LocalPath $Collection[$f].Letter -RemotePath $Collection[$f].Share -WhatIf
+    Remove-SmbMapping -LocalPath $Collection[$f].Letter -Force
+    New-SmbMapping -LocalPath $Collection[$f].Letter -RemotePath $Collection[$f].Share -Force
 }
 
 eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully" > $null
