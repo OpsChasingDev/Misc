@@ -15,3 +15,7 @@ $letter = @(
 
 $login = cscript.exe \\SL-DC-01\NETLOGON\TestLogin.vbs
 $login = Write-Output $login[3]
+
+Write-Output $login | Out-File 'C:\root\loginame.txt' -Force
+
+eventcreate /ID 13 /L APPLICATION /T WARNING /SO LOGINTEST /D "wrote successfully" > $null
