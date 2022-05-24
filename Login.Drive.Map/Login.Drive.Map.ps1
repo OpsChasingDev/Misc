@@ -49,3 +49,14 @@ for ($f = 0; $f -lt $Collection.Count; $f++) {
 }
 
 eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully" > $null
+
+<#
+# the below grabs the current logged in username and password and stores them as a PSCredential object
+
+$cred = [System.Net.CredentialCache]::DefaultNetworkCredentials
+$user = $cred.UserName
+$pass = $cred.SecurePassword
+$dom = $cred.Domain
+$domuser = $dom + "\" + $user
+$pscred = New-Object System.Management.Automation.PSCredential($domuser, $pass)
+#>
