@@ -1,8 +1,3 @@
-<#
-To Do:
-- address problem where script is seemingly not running on login
-#>
-
 $Share = @(
     '\\SL-DC-01\Tools'
     '\\SL-DC-01\TestShares'
@@ -42,11 +37,14 @@ for ($i = 0; $i -lt $Share.Count; $i++) {
 }
 
 for ($f = 0; $f -lt $Collection.Count; $f++) {
-    # Remove-SmbMapping -LocalPath $Collection[$f].Letter -Force
-    # New-SmbMapping -LocalPath $Collection[$f].Letter -RemotePath $Collection[$f].Share
-    net use $Collection[$f].Letter /del > $null
-    net use $Collection[$f].Letter $Collection[$f].Share > $null
+    Remove-SmbMapping -LocalPath $Collection[$f].Letter -Force -ErrorAction SilentlyContinue
+    New-SmbMapping -LocalPath $Collection[$f].Letter -RemotePath $Collection[$f].Share
+    # net use $Collection[$f].Letter /del > $null
+    # net use $Collection[$f].Letter $Collection[$f].Share > $null
 }
+
+Start-Sleep -Seconds 5
+Get-Process explorer | Stop-Process -Force
 
 eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully" > $null
 
