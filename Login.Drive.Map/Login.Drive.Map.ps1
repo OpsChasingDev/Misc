@@ -52,6 +52,7 @@ eventcreate /ID 13 /L APPLICATION /T WARNING /SO DriveMap /D "wrote successfully
 
 <#
 # the below grabs the current logged in username and password and stores them as a PSCredential object
+# if we use the below, the current credentials for the logged in user can be obtained, and then those stored credentials can be passed to the drive mapping cmdlet
 
 $cred = [System.Net.CredentialCache]::DefaultNetworkCredentials
 $user = $cred.UserName
