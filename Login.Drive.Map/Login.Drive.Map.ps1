@@ -36,6 +36,15 @@ for ($i = 0; $i -lt $Share.Count; $i++) {
     $Collection += $obj
 }
 
+# getting current logged in user credentials
+$cred = [System.Net.CredentialCache]::DefaultNetworkCredentials
+  $user = $cred.UserName
+  $pass = $cred.SecurePassword
+  $domain = $cred.Domain
+$domUser = $domain + '\' + $user
+$PSCred = New-Object System.Management.Automation.PSCredential($domUser, $pass)
+
+
 for ($f = 0; $f -lt $Collection.Count; $f++) {
     Remove-SmbMapping -LocalPath $Collection[$f].Letter -Force -ErrorAction SilentlyContinue
     New-SmbMapping -LocalPath $Collection[$f].Letter -RemotePath $Collection[$f].Share
