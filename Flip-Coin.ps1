@@ -14,9 +14,9 @@ for ($i = 0; $i -lt 1; $i++) {
     $t = $tick.ToString()
     $Length = $t.Length
     for ($l = 0; $l -lt $Length; $l++) {
-        $Index = $t.Substring($l,1)
+        [int]$Index = $t.Substring($l,1)
         $Collection += $Index
     }
-    Write-Output $Collection
+
     Start-Sleep -Seconds 1
 }
