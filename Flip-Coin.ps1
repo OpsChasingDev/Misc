@@ -8,14 +8,15 @@
 - if the sum is even, return heads; if the sum is odd, return tails
 #>
 
-for ($i = 0; $i -lt 1000; $i++) {
+for ($i = 0; $i -lt 1; $i++) {
     $Collection = @()
     $tick = ((Get-Uptime).Ticks / 10000000)
     $t = $tick.ToString()
     $Length = $t.Length
     for ($l = 0; $l -lt $Length; $l++) {
-        $Index = $t.Substring(0,{$l+1})
+        $Index = $t.Substring($l,1)
         $Collection += $Index
     }
+    Write-Output $Collection
     Start-Sleep -Seconds 1
 }
