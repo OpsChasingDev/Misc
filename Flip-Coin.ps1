@@ -6,17 +6,23 @@
 - turn each character back into an integer
 - add the integers together
 - if the sum is even, return heads; if the sum is odd, return tails
+- *** add in a 'Harvey Dent' parameter to "make your own luck" xD
 #>
 
-for ($i = 0; $i -lt 1; $i++) {
-    $Collection = @()
+for ($i = 0; $i -lt 1000; $i++) {
+    [int]$Sum = 0
     $tick = ((Get-Uptime).Ticks / 10000000)
     $t = $tick.ToString()
     $Length = $t.Length
     for ($l = 0; $l -lt $Length; $l++) {
         [int]$Index = $t.Substring($l,1)
-        $Collection += $Index
+        $Sum += $Index
     }
-
+    if ($Sum/2 -match ::[double]){
+        Write-Output "Tails"
+    }
+    else {
+        Write-Output "Heads"
+    }
     Start-Sleep -Seconds 1
 }
