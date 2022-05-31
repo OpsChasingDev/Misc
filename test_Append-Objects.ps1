@@ -15,7 +15,7 @@ function Test-1 {
         $Collection[$j] | Add-Member -MemberType ScriptProperty -Name 'Prop3' -Value {'3' + $j}
     }#>
     foreach ($c in $Collection) {
-        $c | Add-Member -MemberType ScriptProperty -Name 'Prop4' -Value {$c.Prop1}
+        $c | Add-Member -MemberType ScriptProperty -Name 'Prop4' -Value {$this.Prop1}
     }
     Write-Output $Collection
 }
