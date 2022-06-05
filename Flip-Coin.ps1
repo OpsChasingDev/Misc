@@ -9,7 +9,6 @@
 - *** add in a 'Harvey Dent' parameter to "make your own luck" xD
 #>
 
-for ($i = 0; $i -lt 1000; $i++) {
     [int]$Sum = 0
     $tick = ((Get-Uptime).Ticks / 10000000)
     $t = $tick.ToString()
@@ -18,11 +17,9 @@ for ($i = 0; $i -lt 1000; $i++) {
         [int]$Index = $t.Substring($l,1)
         $Sum += $Index
     }
-    if ($Sum/2 -match ::[double]){
+    if ($Sum/2 -is [System.Double]){
         Write-Output "Tails"
     }
-    else {
+    elseif ($Sum/2 -is [System.Int32]) {
         Write-Output "Heads"
     }
-    Start-Sleep -Seconds 1
-}
