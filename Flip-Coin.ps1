@@ -1,14 +1,16 @@
-<#
-- based off current system uptime in ticks
-- raw tick is gathered and manipulated to remove trailing zeros
-- new result is turned into a string
-- using the length of the string, separate each character
-- turn each character back into an integer
-- add the integers together
-- if the sum is even, return heads; if the sum is odd, return tails
-- *** add in a 'Harvey Dent' parameter to "make your own luck" xD
-#>
-
+function Flip-Coin {
+    <#
+    .SYNOPSIS
+        A small function to randomly generate "Heads" or "Tails"
+    .DESCRIPTION
+        A small function to randomly generate "Heads" or "Tails"
+    .EXAMPLE
+        PS C:\git\Misc> Flip-Coin      
+        
+        Output    
+        Heads
+    #>
+    
     [int]$Sum = 0
     $tick = ((Get-Uptime).Ticks / 10000000)
     $t = $tick.ToString()
@@ -23,3 +25,4 @@
     elseif ($Sum/2 -is [System.Int32]) {
         Write-Output "Heads"
     }
+}
