@@ -7,8 +7,12 @@ function Flip-Coin {
     .EXAMPLE
         PS C:\git\Misc> Flip-Coin      
         
-        Output    
         Heads
+    .EXAMPLE
+        PS C:\git\Misc> Flip-Coin -HarveyDent $true
+        
+        Heads
+        You make your own luck...
     #>
     [CmdletBinding()]
     param (
