@@ -18,7 +18,7 @@ function Get-Mandelbrot {
     )
 
     for ($i = 0; $i -lt $iteration; $i++) {
-        $z = ($z * $z) + $c
+        $z = (Get-Power -StartValue $z -PowerValue 2) + $c
         Write-Output $z
     }
 }
