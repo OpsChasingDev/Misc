@@ -1,6 +1,9 @@
 function Get-Power {
     param (
+        [Parameter(Mandatory)]
         [double]$StartValue,
+
+        [Parameter(Mandatory)]
         [int]$PowerValue
     )
     $IterativeValue = $StartValue
