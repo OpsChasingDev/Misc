@@ -1,7 +1,7 @@
 function Get-Mandelbrot {
     param (
         [double]$c,
-        [double]$z,
+        [double]$z = 0,
         [int64]$iteration
     )
 
