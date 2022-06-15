@@ -7,7 +7,7 @@ $RCSplatInbound = @{
     Description = 'Prevents Windows Firewall from interfering with RingCentral'
     Direction = 'Inbound'
 }
-New-NetFirewallRule @RCSplatInbound
+New-NetFirewallRule @RCSplatInbound > $null
 
 $RCAppSplatInbound = @{
     Program = '%localappdata%\programs\ringcentral\ringcentral.exe'
@@ -17,7 +17,7 @@ $RCAppSplatInbound = @{
     Description = 'Prevents Windows Firewall from interfering with RingCentral App'
     Direction = 'Inbound'
 }
-New-NetFirewallRule @RCAppSplatInbound
+New-NetFirewallRule @RCAppSplatInbound > $null
 
 # install app
 Start-Process 'C:\Savant\RingCentral-x64.msi' -ArgumentList '/q' -Wait
