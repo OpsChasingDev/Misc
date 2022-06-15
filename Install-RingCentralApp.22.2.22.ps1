@@ -21,3 +21,12 @@ New-NetFirewallRule @RCAppSplatInbound
 
 # install app
 Start-Process 'C:\Savant\RingCentral-x64.msi' -ArgumentList '/q' -Wait
+
+# check to make sure app is installed
+$filepath = 'C:\program files\ringcentral\ringcentral.exe'
+if ($filepath) {
+    Write-Output 'True'
+}
+else {
+    Write-Output 'False'
+}
