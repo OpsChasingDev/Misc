@@ -4,6 +4,10 @@ param (
     [string]$Install_Arguments_String
 )
 
-Start-Process "C:\Savant\$Executable_File_Name" -ArgumentList $Install_Arguments_String -Wait
-
-Write-Output "Installed $Executable_File_Name on $ENV:COMPUTERNAME."
+try {
+    Start-Process "C:\Savant\$Executable_File_Name" -ArgumentList $Install_Arguments_String -Wait
+    Write-Output "Installed $Executable_File_Name on $ENV:COMPUTERNAME."
+}
+catch {
+    Write-Output "Installation of $Executable_File_Name on $ENV:COMPUTERNAME failed."
+}
