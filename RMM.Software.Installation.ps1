@@ -1,3 +1,4 @@
+# wrapper to pass global variables in RMM script as arguments to this locally run PS script
 param (
     [string]$Executable_File_Name,
     [string]$Install_Arguments_String
