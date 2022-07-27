@@ -10,5 +10,5 @@ try {
 }
 catch {
     Write-Output "Installation of $Executable_File_Name on $ENV:COMPUTERNAME failed."
-    Write-Error | Out-File "C:\Savant\error.txt"
+    $Error[0].ToString() | Out-File -FilePath "C:\Savant\Error.txt"
 }
