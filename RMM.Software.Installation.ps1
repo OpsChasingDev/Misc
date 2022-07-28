@@ -5,7 +5,7 @@ param (
 )
 
 try {
-    Start-Process -FilePath "C:\Savant\$Executable_File_Name" -ArgumentList $Install_Arguments_String -Wait
+    Start-Process -FilePath "C:\Savant\$Executable_File_Name" -ArgumentList "$Install_Arguments_String" -Wait
     Write-Output "Installed $Executable_File_Name on $ENV:COMPUTERNAME."
 }
 catch {
