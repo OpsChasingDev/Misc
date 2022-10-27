@@ -1,3 +1,4 @@
+# THIS NEEDS TO BE FINISHED
 # takes a login identity as input and searches non-system and non-admin shares for any NTFS permissions with that identity listed
 $Identity = Read-Host "Enter a login identity ('domain\username' or 'group name') to search for"
 
