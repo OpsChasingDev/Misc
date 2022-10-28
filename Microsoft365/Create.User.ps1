@@ -14,6 +14,7 @@ $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordPro
 $PasswordProfile.Password = $Password
 $DisplayName = $FirstName + " " + $LastName
 $UPN = $FirstName + "." + $LastName + "@" + $Domain
+$MailNickName = $FirstName + $LastName
 
 # user creation
 $NewUserSplat = @{
@@ -23,6 +24,6 @@ $NewUserSplat = @{
     Surname = $FirstName
     UserPrincipalName = $UPN
     PasswordProfile = $PasswordProfile
-    MailNickName = $DisplayName
+    MailNickName = $MailNickName
 }
 New-AzureADUser @NewUserSplat
