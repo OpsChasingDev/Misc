@@ -2,3 +2,14 @@
 Install-Module AzureAD
 Import-Module AzureAD
 Connect-AzureAD
+
+# user creation
+$NewUserSplat = @{
+    AccountEnabled
+    DisplayName
+    GiveName
+    Surname
+    UserPrincipalName
+
+}
+New-AzureADUser @NewUserSplat
