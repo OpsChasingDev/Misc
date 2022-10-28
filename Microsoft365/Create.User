@@ -1,0 +1,4 @@
+# connect to M365 account using Graph
+Install-Module AzureAD
+Import-Module AzureAD
+Connect-AzureAD
