@@ -23,6 +23,6 @@ $NewUserSplat = @{
     Surname = $FirstName
     UserPrincipalName = $UPN
     PasswordProfile = $PasswordProfile
-
+    MailNickName = $DisplayName
 }
 New-AzureADUser @NewUserSplat
