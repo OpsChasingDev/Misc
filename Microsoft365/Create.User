@@ -1,10 +1,12 @@
+
 # connect to M365 account using Graph
 Install-Module AzureAD
 Import-Module AzureAD
 Connect-AzureAD
 
 # formulating values
-
+$PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+$PasswordProfile.Password = $Password
 
 # user creation
 $NewUserSplat = @{
@@ -13,6 +15,7 @@ $NewUserSplat = @{
     GivenName
     Surname
     UserPrincipalName
+    PasswordProfile
 
 }
 New-AzureADUser @NewUserSplat
