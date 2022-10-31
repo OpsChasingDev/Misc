@@ -1,0 +1,5 @@
+<#
+- takes a user to copy licensing from and applies it to a desired, unlicensed user
+- this effectively gives the unlicensed user the same license assignments as the specified example user
+#>
+
