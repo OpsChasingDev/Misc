@@ -4,8 +4,8 @@
 #>
 
 # take user input
-$TargetUser = Read-Host "Enter the user (ObjectID) who you want to apply licensing to."
-$ExampleUser = Read-Host "Enter the example user (ObjectID) whose licensing mirrors what you want applied to the new user."
+$TargetUser = Read-Host "Enter the user (ObjectID) who you want to apply licensing to"
+$ExampleUser = Read-Host "Enter the example user (ObjectID) whose licensing mirrors what you want applied to the new user"
 
 # make sure both specified accounts exist
 try { $TargetUserStored = Get-AzureADUser -ObjectId $TargetUser }
@@ -36,4 +36,7 @@ $ExampleLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLice
 $ExampleLicense.SkuId = $ExampleUserStored.AssignedLicenses.SkuId
 $TargetLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
 $TargetLicense.AddLicenses = $ExampleLicense
-Set-AzureADUserLicense -ObjectId $TargetUserStored.ObjectID -AssignedLicenses $TargetLicense
+
+# assign the licensing
+Set-AzureADUserLicense -ObjectId $TargetUserStored.ObjectID -AssignedLicenses $TargetLicense -ErrorAction Stop
+Write-Output "Licensing assigned successfully to $($TargetUserStored.DisplayName)."
