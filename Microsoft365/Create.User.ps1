@@ -29,5 +29,6 @@ $NewUserSplat = @{
     UserPrincipalName = $UPN
     PasswordProfile = $PasswordProfile
     MailNickName = $MailNickName
+    UsageLocation = 'US'
 }
 New-AzureADUser @NewUserSplat
