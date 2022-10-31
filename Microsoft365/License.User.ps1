@@ -21,7 +21,7 @@ catch {
 }
 
 # verification to proceed
-$Confirm = Read-Host "You are about to assign licensing to user $($TargetUserStored.DisplayName) which mirrors that of user $($ExampleUserStored.DisplayName).`n`n
+$Confirm = Read-Host "`nYou are about to assign licensing to user $($TargetUserStored.DisplayName) which mirrors that of user $($ExampleUserStored.DisplayName).`n
 Are you sure you want to proceed? (y/n)"
 if ($Confirm -eq 'y' -or $Confirm -eq 'yes') { Write-Output "Assigning licensing" }
 else { "no change has been made"; break }
