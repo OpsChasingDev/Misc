@@ -32,3 +32,8 @@ else {
 }
 
 # creating licensing
+$ExampleLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense
+$ExampleLicense.SkuId = $ExampleUserStored.AssignedLicenses.SkuId
+$TargetLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses
+$TargetLicense.AddLicenses = $ExampleLicense
+Set-AzureADUserLicense -ObjectId $TargetUserStored.ObjectID -AssignedLicenses $TargetLicense
