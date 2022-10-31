@@ -1,7 +1,9 @@
 # connect to M365 account using Graph
+<#
 Install-Module AzureAD
 Import-Module AzureAD
 Connect-AzureAD
+#>
 
 # prompt user input
 $FirstName = Read-Host "Enter a first name"
