@@ -1,4 +1,6 @@
-# connect to M365 account using Graph
+<#
+- creates a new user in Microsoft 365 (AzureAD)
+#>
 <#
 Install-Module AzureAD
 Import-Module AzureAD
