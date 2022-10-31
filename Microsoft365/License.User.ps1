@@ -3,9 +3,11 @@
 - this effectively gives the unlicensed user the same license assignments as the specified example user
 #>
 
+# take user input
 $TargetUser = Read-Host "Enter the user who you want to apply licensing to (DisplayName or ObjectId)"
 $ExampleUser = Read-Host "Enter the example user whose licensing mirrors what you want applied to the new user (DisplayName or ObjectId)"
 
+# make sure both specified accounts exist
 try {
     $TargetUserStored = Get-AzureADUser | Where-Object { $_.DisplayName -eq $TargetUser -or $_.ObjectId -eq $TargetUser }
 }
