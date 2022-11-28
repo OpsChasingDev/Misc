@@ -1,4 +1,4 @@
-$servers = (Get-ADComputer -Filter * -SearchBase "").Name
+$servers = (Get-ADComputer -Filter *).Name
 
 Invoke-Command -ComputerName $servers -ScriptBlock {
     $hostname = hostname
