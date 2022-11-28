@@ -2,7 +2,6 @@ $servers = (Get-ADComputer -Filter *).Name
 
 Invoke-Command -ComputerName $servers -ScriptBlock {
     $hostname = hostname
-    $member = (Get-LocalGroupMember -Group Administrators).Name
-    $output = "[$hostname] $member"
-    Write-Output $output
+    (Get-LocalGroupMember -Group Administrators).Name |
+        ForEach-Object { Write-Output "[$hostname] $_"}
 } -ErrorAction SilentlyContinue
