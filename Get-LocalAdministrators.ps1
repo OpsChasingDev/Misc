@@ -1,4 +1,4 @@
-$servers = (Get-ADComputer -Filter * -SearchBase "DC=RubyCollins,DC=local").Name
+$servers = (Get-ADComputer -Filter * -SearchBase "").Name
 
 Invoke-Command -ComputerName $servers -ScriptBlock {
     $hostname = hostname
