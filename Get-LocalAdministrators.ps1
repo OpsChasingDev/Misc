@@ -1,3 +1,4 @@
+$Path = Read-Host "Enter the full path to a CSV file where data will be stored"
 $Computer = (Get-ADComputer -Filter *).Name
 
 Invoke-Command -ComputerName $Computer -ScriptBlock {
@@ -11,4 +12,4 @@ Invoke-Command -ComputerName $Computer -ScriptBlock {
         $objCol += $obj
     }
     Write-Output $objCol
-} -ErrorAction SilentlyContinue | Select-Object ComputerName, Member
+} -ErrorAction SilentlyContinue | Select-Object ComputerName, Member | Export-Csv -Path $Path -NoTypeInformation -Force
