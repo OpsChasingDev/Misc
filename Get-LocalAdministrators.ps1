@@ -1,5 +1,6 @@
 <#
     - attempts to connect to all computers in the local domain and return the members of their local Administrators group
+    - the script MUST be run on a domain controller or a machine that has access to the ActiveDirectory PowerShell module
     - running the script first prompts the full path of a CSV file in which to store the output
     - example CSV file full path: "C:\MyFolder\LocalAdmins.csv"
     - if a proper CSV file full path is not specified, the script will end with no operation done
