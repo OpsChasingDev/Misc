@@ -1,10 +1,12 @@
-$objCol = @()
-$Member = Get-LocalGroupMember -Group Administrators
-foreach ($m in $Member) {
-    $obj = [PSCustomObject]@{
-        ComputerName = $env:COMPUTERNAME
-        Member = $m.Name
+Invoke-Command localhost {
+    $objCol = @()
+    $Member = Get-LocalGroupMember -Group Administrators
+    foreach ($m in $Member) {
+        $obj = [PSCustomObject]@{
+            ComputerName = $env:COMPUTERNAME
+            Member = $m.Name
+        }
+        $objCol += $obj
     }
-    $objCol += $obj
-}
-Write-Output $objCol
+    Write-Output $objCol
+} | Select-Object ComputerName,Member
