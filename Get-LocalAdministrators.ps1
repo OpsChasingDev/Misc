@@ -1,6 +1,6 @@
-# currently hard-coded to target localhost
+$Computer = (Get-ADComputer -Filter *).Name
 
-Invoke-Command localhost {
+Invoke-Command -ComputerName $Computer -ScriptBlock {
     $objCol = @()
     $Member = Get-LocalGroupMember -Group Administrators
     foreach ($m in $Member) {
@@ -11,4 +11,4 @@ Invoke-Command localhost {
         $objCol += $obj
     }
     Write-Output $objCol
-} | Select-Object ComputerName,Member
+} -ErrorAction SilentlyContinue | Select-Object ComputerName, Member
