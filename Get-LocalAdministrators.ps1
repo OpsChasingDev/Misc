@@ -1,3 +1,5 @@
+# currently hard-coded to target localhost
+
 Invoke-Command localhost {
     $objCol = @()
     $Member = Get-LocalGroupMember -Group Administrators
