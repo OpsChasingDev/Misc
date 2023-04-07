@@ -1,0 +1,7 @@
+# returns all user account SIDs on the system and changes their respective iManage registry folder
+$Users = (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\' | Where-Object {$_.Name.Length -gt 100}).Name
+
+foreach ($u in $Users) {
+    $SID = $u.Split("\")[-1]
+    Rename-Item -Path Registry::HKU\$SID\SOFTWARE\iManage -NewName "iManage.OLD" -ErrorAction SilentlyContinue
+}
