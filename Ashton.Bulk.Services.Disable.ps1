@@ -11,6 +11,7 @@ $servicesToDisable = @(
     #"WpnService",
     #"SDRSVC"
 )
+# Add Google Update services dynamically
 $servicesToDisable += (Get-Service | Where-Object { $_.Name -like "*googleupdater*" }).Name
 
 foreach ($svc in $servicesToDisable) {
