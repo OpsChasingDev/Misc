@@ -4,8 +4,6 @@ $servicesToDisable = @(
     "XblAuthManager",
     "XblGameSave",
     "XboxNetApiSvc",
-    "GoogleUpdaterInternalService144.0.7547.0",
-    "GoogleUpdaterService144.0.7547.0",
     "edgeupdate",
     "edgeupdatem"
     #"WSearch",
@@ -13,6 +11,7 @@ $servicesToDisable = @(
     #"WpnService",
     #"SDRSVC"
 )
+$servicesToDisable += (Get-Service | Where-Object { $_.Name -like "*googleupdater*" }).Name
 
 foreach ($svc in $servicesToDisable) {
 
