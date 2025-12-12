@@ -7,40 +7,25 @@ $servicesToDisable = @(
     "GoogleUpdaterInternalService144.0.7547.0",
     "GoogleUpdaterService144.0.7547.0",
     "edgeupdate",
-    "edgeupdatem",
-    "WSearch",
-    "wuaserv",
-    "WpnService",
-    "SDRSVC"
+    "edgeupdatem"
+    #"WSearch",
+    #"wuaserv",
+    #"WpnService",
+    #"SDRSVC"
 )
 
-if ($servicesToDisable.Count -eq 0) {
-    Write-Host "No services specified. Add service names to the script before running."
-    exit
-}
-
 foreach ($svc in $servicesToDisable) {
-    Write-Host "Processing service: $svc..."
 
     # Stop the service if running
     Try {
         Stop-Service -Name $svc -Force -ErrorAction Stop
-        Write-Host "  → Service stopped."
     }
-    Catch {
-        Write-Host "  → Could not stop service or it may already be stopped."
-    }
+    Catch {}
 
     # Set service startup type to disabled
     Try {
-        Set-Service -Name $svc -StartupType Disabled
-        Write-Host "  → Startup type set to Disabled."
+        Set-Service -Name $svc -StartupType Disabled -Force
     }
-    Catch {
-        Write-Host "  → Failed to set startup type."
-    }
+    Catch {}
 
-    Write-Host ""
 }
-
-Write-Host "Completed service disabling operation."
